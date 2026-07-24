@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتيجة الثانوية العامة 2025 - الاستعلام الفوري</title>
+    
+    <!-- SEO & Open Graph Meta Tags -->
+    <meta name="description" content="الموقع الرسمي للاستعلام عن نتيجة الثانوية العامة 2025 برقم الجلوس أو الاسم بكل سرعة ولحظياً.">
+    <link rel="canonical" href="https://thanaweya2025.com/">
+    <meta property="og:title" content="نتيجة الثانوية العامة 2025 - الاستعلام الفوري">
+    <meta property="og:description" content="احصل على نتيجتك الآن برقم الجلوس أو الاسم فوراً وبكل سهولة.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thanaweya2025.com/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="نتيجة الثانوية العامة 2025">
+    <meta name="twitter:description" content="الاستعلام الفوري عن نتيجة الثانوية العامة 2025 برقم الجلوس والاسم.">
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "نتيجة الثانوية العامة 2025",
+      "url": "https://thanaweya2025.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://thanaweya2025.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- External Libraries (SheetJS, html2pdf, qrious for QR) -->
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: rgba(30, 41, 59, 0.8);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .light {
+            --bg-primary: #f1f5f9;
+            --bg-secondary: #ffffff;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border: rgba(0, 0, 0, 0.1);
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Gradient Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(125deg, #0f172a, #1e293b, #0f172a, #172554);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        .light .bg-animation {
+            background: linear-gradient(125deg, #f1f5f9, #e2e8f0, #f8fafc, #cbd5e1);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 900;
+            font-size: 1.25rem;
+        }
+
+        .site-logo-img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        main {
+            flex: 1;
+            max-width: 900px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Stats Bar Before Search */
+        .stats-top-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-mini-card {
+            padding: 0.85rem;
+            border-radius: 14px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .stat-mini-card span:first-child {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .stat-mini-card span:last-child {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border-radius: 24px;
+            position: relative;
+        }
+
+        .ministry-logo {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+
+        .hero-title {
+            font-size: 2.3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-wrapper {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.25rem 1rem 3rem;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(59,130,246,0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .suggestions-dropdown {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            max-height: 280px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+            box-shadow: var(--shadow);
+            text-align: right;
+        }
+
+        .suggestion-item {
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .suggestion-item:last-child { border-bottom: none; }
+        .suggestion-item:hover { background: rgba(59, 130, 246, 0.1); }
+
+        .db-status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding: 0 0.5rem;
+            gap: 1rem;
+        }
+
+        .mini-progress {
+            flex: 1;
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .mini-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        /* Result Card Styles with Slide + Fade Animation */
+        .result-container {
+            display: none;
+            animation: slideFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideFadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-card {
+            border-radius: 24px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Meta Top Banner inside Card */
+        .result-meta-banner {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 0.75rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 1rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            font-size: 0.85rem;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            text-align: center;
+        }
+
+        .meta-item span:first-child { color: var(--text-secondary); font-weight: 600; }
+        .meta-item span:last-child { color: var(--text-primary); font-weight: 800; }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .student-main-info h2 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .student-main-info p { color: var(--text-secondary); font-size: 1.05rem; }
+
+        /* Success & Alert Banners */
+        .alert-banner {
+            padding: 1.25rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .alert-success { background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #10b981; }
+        .alert-gold { background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; color: #f59e0b; }
+        .alert-danger { background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; color: #ef4444; }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 1.25rem;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .stat-label { font-size: 0.9rem; color: var(--text-secondary); font-weight: 600; }
+        .stat-value { font-size: 1.5rem; font-weight: 900; color: var(--text-primary); }
+
+        /* Circular Progress Styling */
+        .circular-progress-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .circular-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
+        .circular-container svg {
+            width: 120px;
+            height: 120px;
+            transform: rotate(-90deg);
+        }
+
+        .circular-container circle {
+            fill: none;
+            stroke-width: 10;
+            stroke-linecap: round;
+        }
+
+        .circle-bg { stroke: var(--border); }
+        .circle-progress { 
+            stroke: var(--accent); 
+            stroke-dasharray: 314;
+            stroke-dashoffset: 314;
+            transition: stroke-dashoffset 1.2s ease-in-out, stroke 0.3s;
+        }
+
+        .circular-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.3rem;
+            font-weight: 900;
+        }
+
+        /* Result Actions Buttons */
+        .result-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: var(--accent-hover); }
+        .btn-secondary { background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border); }
+        .btn-whatsapp { background: #25d366; color: white; }
+        .btn-facebook { background: #1877f2; color: white; }
+        .btn-telegram { background: #0088cc; color: white; }
+
+        .error-state {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            background: var(--bg-card);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            gap: 1.25rem;
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 2rem 1rem;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+
+    <!-- Header -->
+    <header class="glass">
+        <div class="nav-container">
+            <a href="#" class="logo-area">
+                <img src="للوجوا.jpeg" class="site-logo-img" alt="شعار الموقع" onerror="this.style.display='none'">
+                <span>نتيجة الثانوية العامة 2025</span>
+            </a>
+            <button class="theme-toggle" id="themeToggleBtn" title="تغيير المظهر"><i class="fa-solid fa-moon"></i></button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Stats Top Bar Before Search -->
+        <div class="stats-top-bar" id="statsTopBar">
+            <div class="stat-mini-card glass">
+                <span>عدد الطلاب</span>
+                <span id="statTotalStudents">جاري التحميل...</span>
+            </div>
+            <div class="stat-mini-card glass">
+                <span>النظام المعتمد</span>
+                <span>حديث / قديم</span>
+            </div>
+            <div class="stat-mini-card glass">
+                <span>آخر تحديث</span>
+                <span>يوليو 2026</span>
+            </div>
+            <div class="stat-mini-card glass">
+                <span>حالة القاعدة</span>
+                <span id="statDbStatus" style="color: #10b981;">متصل محلياً</span>
+            </div>
+        </div>
+
+        <section class="hero-section glass">
+            <!-- Ministry Logo -->
+            <img src="للوجوا.jpeg" class="ministry-logo" alt="شعار جمهورية مصر العربية">
+            <h1 class="hero-title">نتيجة الثانوية العامة 2025</h1>
+            <p class="hero-desc">الاستعلام الفوري واللحظي برقم الجلوس أو اسم الطالب.</p>
+            
+            <div class="search-wrapper">
+                <div class="search-input-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="اكتب رقم الجلوس أو اسم الطالب هنا..." autocomplete="off">
+                    <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <div class="suggestions-dropdown" id="suggestionsDropdown"></div>
+                </div>
+                
+                <div class="db-status-bar" id="dbStatusBar">
+                    <span id="dbStatusText">جاري تجهيز قاعدة البيانات...</span>
+                    <div class="mini-progress">
+                        <div class="mini-progress-fill" id="miniProgressFill"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Error State -->
+        <div class="error-state" id="errorState">
+            <h3 id="errorTitle">تنبيه</h3>
+            <p id="errorDesc">يرجى التأكد من توفر ملف n25.xlsx في مسار العمل.</p>
+            <button class="btn btn-primary" style="margin: 0 auto;" onclick="location.reload()"><i class="fa-solid fa-rotate-right"></i> إعادة المحاولة</button>
+        </div>
+
+        <!-- Result Card -->
+        <div class="result-container" id="resultContainer">
+            <div class="result-card glass" id="printableCard">
+                
+                <!-- Meta Banner -->
+                <div class="result-meta-banner">
+                    <div class="meta-item">
+                        <span>سنة النتيجة</span>
+                        <span>2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>النظام الدراسي</span>
+                        <span id="metaSystem">-</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>حالة النتيجة</span>
+                        <span style="color: #10b981;">معتمدة رسمياً ✓</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>وقت الاستعلام</span>
+                        <span id="metaTime">-</span>
+                    </div>
+                </div>
+
+                <div class="result-header">
+                    <div class="student-main-info">
+                        <h2 id="resName">-</h2>
+                        <p>رقم الجلوس: <span id="resSeat" style="font-weight: 700;">0</span></p>
+                    </div>
+                    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.5rem;">
+                        <div class="grade-badge" id="resGrade" style="font-weight: 800; padding: 0.5rem 1.25rem; border-radius: 50px; font-size: 1rem;">-</div>
+                    </div>
+                </div>
+
+                <!-- Success / Alert Banner -->
+                <div id="alertBanner" class="alert-banner alert-success">
+                    <i id="alertIcon" class="fa-solid fa-circle-check"></i>
+                    <span id="alertMessage">-</span>
+                </div>
+
+                <div class="result-grid">
+                    <div class="stat-box">
+                        <span class="stat-label">المجموع الكلي</span>
+                        <span class="stat-value" id="resTotal">0 / 0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">النسبة المئوية</span>
+                        <span class="stat-value" id="resPercentage">0%</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">الترتيب العام</span>
+                        <span class="stat-value" id="resRank">-</span>
+                    </div>
+                </div>
+
+                <!-- Circular Progress Section -->
+                <div class="circular-progress-section">
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <span style="font-weight: 800; font-size: 1.1rem;">مؤشر الأداء والنسبة المئوية</span>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">حساب دقيق يعتمد على النظام الدراسي التلقائي</span>
+                    </div>
+                    <div class="circular-container">
+                        <svg>
+                            <circle class="circle-bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="circle-progress" id="circleProgress" cx="60" cy="60" r="50"></circle>
+                        </svg>
+                        <div class="circular-value" id="circularValueText">0%</div>
+                    </div>
+                </div>
+
+                <!-- Result Actions -->
+                <div class="result-actions">
+                    <button class="btn btn-primary" id="printPdfBtn"><i class="fa-solid fa-file-pdf"></i> طباعة الشهادة الرسمية PDF</button>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-secondary" onclick="copyResultText()"><i class="fa-solid fa-copy"></i> نسخ النتيجة</button>
+                        <a id="shareWhatsapp" class="btn btn-whatsapp" href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب</a>
+                        <a id="shareFacebook" class="btn btn-facebook" href="#" target="_blank"><i class="fa-brands fa-facebook"></i> فيسبوك</a>
+                        <a id="shareTelegram" class="btn btn-telegram" href="#" target="_blank"><i class="fa-brands fa-telegram"></i> تليجرام</a>
+                    </div>
+
+                    <button class="btn btn-secondary" onclick="resetSearch()"><i class="fa-solid fa-arrow-rotate-left"></i> بحث جديد</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>تم تطوير الموقع بواسطة <a href="#" id="developerLink">مؤمن نصر محمد</a> (طالب بالصف الثالث الثانوي)</p>
+        <p style="font-size: 0.85rem;">الإصدار: 2.0 | آخر تحديث: يوليو 2026</p>
+    </footer>
+
+    <!-- JavaScript Application Core -->
+    <script>
+        const CONFIG = {
+            EXCEL_FILES: ["n25.xlsx", "./n25.xlsx", "data/n25.xlsx", "assets/n25.xlsx"],
+            DB_NAME: "ThanaweyaDB_2025_v2",
+            STORE_NAME: "students_store"
+        };
+
+        let studentsData = [];
+        let seatIndexMap = new Map();
+        let prefixIndexMap = new Map(); // Prefix index for fast name search
+        let isDataReady = false;
+        let debounceTimer = null;
+
+        // Theme management
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const htmlElement = document.documentElement;
+        if (localStorage.getItem('theme') === 'light') {
+            htmlElement.classList.remove('dark');
+            htmlElement.classList.add('light');
+            themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        }
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.remove('light');
+                htmlElement.classList.add('dark');
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        function cleanName(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/[\u064B-\u0652]/g, '')
+                .replace(/[إأآا]/g, 'ا')
+                .replace(/ة/g, 'ه')
+                .replace(/[ىي]/g, 'ي')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        // IndexedDB Helpers
+        function openIndexedDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(CONFIG.DB_NAME, 1);
+                request.onerror = () => reject(request.error);
+                request.onsuccess = () => resolve(request.result);
+                request.onupgradeneeded = (event) => {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains(CONFIG.STORE_NAME)) {
+                        db.createObjectStore(CONFIG.STORE_NAME);
+                    }
+                };
+            });
+        }
+
+        async function getCachedData() {
+            try {
+                const db = await openIndexedDB();
+                return new Promise((resolve) => {
+                    const transaction = db.transaction(CONFIG.STORE_NAME, "readonly");
+                    const store = transaction.objectStore(CONFIG.STORE_NAME);
+                    const request = store.get("studentsData");
+                    request.onsuccess = () => resolve(request.result || null);
+                    request.onerror = () => resolve(null);
+                });
+            } catch (e) {
+                return null;
+            }
+        }
+
+        async function setCachedData(data) {
+            try {
+                const db = await openIndexedDB();
+                const transaction = db.transaction(CONFIG.STORE_NAME, "readwrite");
+                const store = transaction.objectStore(CONFIG.STORE_NAME);
+                store.put(data, "studentsData");
+            } catch (e) {
+                console.warn("IndexedDB cache save failed:", e);
+            }
+        }
+
+        // Build Prefix Index for Lightning-Fast Search
+        function buildIndexes(data) {
+            studentsData = data;
+            seatIndexMap.clear();
+            prefixIndexMap.clear();
+
+            studentsData.forEach(student => {
+                seatIndexMap.set(student.seatNumber, student);
+                
+                // Build Prefix Index (indexing words and 3-char prefixes)
+                const words = student.cleanName.split(' ');
+                words.forEach(word => {
+                    for (let i = 1; i <= Math.min(word.length, 4); i++) {
+                        const prefix = word.substring(0, i);
+                        if (!prefixIndexMap.has(prefix)) {
+                            prefixIndexMap.set(prefix, new Set());
+                        }
+                        prefixIndexMap.get(prefix).add(student);
+                    }
+                });
+            });
+
+            isDataReady = true;
+            document.getElementById('statTotalStudents').textContent = `${studentsData.length.toLocaleString()} طالب`;
+            updateStatusUI(`تم تحميل ${studentsData.length.toLocaleString()} طالب بنجاح ✓`, 100, true);
+        }
+
+        function updateStatusUI(text, progress, autoHide = false) {
+            const statusText = document.getElementById('dbStatusText');
+            const progressFill = document.getElementById('miniProgressFill');
+            if (statusText) statusText.textContent = text;
+            if (progressFill) progressFill.style.width = `${progress}%`;
+            
+            if (autoHide) {
+                setTimeout(() => {
+                    const bar = document.getElementById('dbStatusBar');
+                    if (bar) bar.style.display = 'none';
+                }, 2500);
+            }
+        }
+
+        // Web Worker for background Excel parsing
+        const workerCode = `
+            importScripts('https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js');
+            
+            function cleanName(str) {
+                if (!str) return '';
+                return String(str)
+                    .replace(/[\\u064B-\\u0652]/g, '')
+                    .replace(/[إأآا]/g, 'ا')
+                    .replace(/ة/g, 'ه')
+                    .replace(/[ىي]/g, 'ي')
+                    .replace(/\\s+/g, ' ')
+                    .trim();
+            }
+
+            function detectColumns(headers) {
+                let seatCol = null, nameCol = null, scoreCol = null;
+                headers.forEach((h, index) => {
+                    const cleanH = String(h).trim().toLowerCase();
+                    if (cleanH.includes('جلوس') || cleanH.includes('seat') || cleanH.includes('رقم')) {
+                        if (seatCol === null) seatCol = index;
+                    } else if (cleanH.includes('اسم') || cleanH.includes('طالب') || cleanH.includes('name')) {
+                        if (nameCol === null) nameCol = index;
+                    } else if (cleanH.includes('مجموع') || cleanH.includes('درجة') || cleanH.includes('score') || cleanH.includes('total')) {
+                        if (scoreCol === null) scoreCol = index;
+                    }
+                });
+                if (seatCol === null) seatCol = 0;
+                if (nameCol === null) nameCol = 1;
+                if (scoreCol === null) scoreCol = 2;
+                return { seatCol, nameCol, scoreCol };
+            }
+
+            self.onmessage = async function(e) {
+                try {
+                    const arrayBuffer = e.data;
+                    const workbook = XLSX.read(arrayBuffer, { type: "array" });
+                    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: "", raw: false });
+                    
+                    if (!rawData || rawData.length < 2) {
+                        self.postMessage({ error: "الملف فارغ" });
+                        return;
+                    }
+
+                    const cols = detectColumns(rawData[0]);
+                    let parsedStudents = [];
+
+                    for (let i = 1; i < rawData.length; i++) {
+                        const row = rawData[i];
+                        if (row) {
+                            const seatNumber = String(row[cols.seatCol] || '').replace(/\\s/g, '').trim();
+                            const rawName = String(row[cols.nameCol] || '').trim();
+                            const score = parseFloat(row[cols.scoreCol] || 0);
+
+                            if (seatNumber && rawName && !isNaN(score)) {
+                                parsedStudents.push({
+                                    seatNumber,
+                                    name: rawName,
+                                    cleanName: cleanName(rawName),
+                                    score
+                                });
+                            }
+                        }
+                    }
+
+                    parsedStudents.sort((a, b) => b.score - a.score);
+                    self.postMessage({ success: true, data: parsedStudents });
+                } catch (err) {
+                    self.postMessage({ error: err.message });
+                }
+            };
+        `;
+
+        async function initBackgroundLoader() {
+            const cached = await getCachedData();
+            if (cached && cached.length > 0) {
+                buildIndexes(cached);
+                return;
+            }
+
+            updateStatusUI("جاري تحميل قاعدة البيانات...", 20);
+            let response = null;
+            for (let path of CONFIG.EXCEL_FILES) {
+                try {
+                    response = await fetch(`${path}?v=${Date.now()}`);
+                    if (response.ok) break;
+                } catch (err) {}
+            }
+
+            if (!response || !response.ok) {
+                updateStatusUI("تعذر العثور على ملف البيانات (n25.xlsx)", 0);
+                document.getElementById('errorState').style.display = 'block';
+                return;
+            }
+
+            updateStatusUI("جاري معالجة البيانات...", 50);
+            const arrayBuffer = await response.arrayBuffer();
+
+            const blob = new Blob([workerCode], { type: 'application/javascript' });
+            const workerUrl = URL.createObjectURL(blob);
+            const worker = new Worker(workerUrl);
+
+            worker.onmessage = function(e) {
+                if (e.data.success) {
+                    const data = e.data.data;
+                    buildIndexes(data);
+                    setCachedData(data);
+                } else {
+                    updateStatusUI("خطأ في تحليل البيانات", 0);
+                    document.getElementById('errorState').style.display = 'block';
+                }
+                worker.terminate();
+                URL.revokeObjectURL(workerUrl);
+            };
+
+            worker.onerror = function() {
+                updateStatusUI("حدث خطأ أثناء المعالجة", 0);
+                document.getElementById('errorState').style.display = 'block';
+                worker.terminate();
+                URL.revokeObjectURL(workerUrl);
+            };
+
+            worker.postMessage(arrayBuffer, [arrayBuffer]);
+        }
+
+        window.addEventListener('DOMContentLoaded', initBackgroundLoader);
+
+        // Core Calculation & Display Logic
+        function getSystemDetails(score) {
+            // Automatic System Determination: <= 320 Modern (320 max), > 320 Old (410 max)
+            if (score <= 320) {
+                return {
+                    systemName: "حديث (320)",
+                    maxScore: 320,
+                    percentage: (score / 320) * 100
+                };
+            } else {
+                return {
+                    systemName: "قديم (410)",
+                    maxScore: 410,
+                    percentage: (score / 410) * 100
+                };
+            }
+        }
+
+        function getStudentRank(seatNumber) {
+            const index = studentsData.findIndex(s => s.seatNumber === seatNumber);
+            return index !== -1 ? (index + 1) : '-';
+        }
+
+        function displayResult(student) {
+            const sys = getSystemDetails(student.score);
+            const pct = sys.percentage;
+            const pctStr = pct.toFixed(2) + '%';
+
+            document.getElementById('resName').textContent = student.name;
+            document.getElementById('resSeat').textContent = student.seatNumber;
+            document.getElementById('metaSystem').textContent = sys.systemName;
+            document.getElementById('resTotal').textContent = `${student.score} / ${sys.maxScore}`;
+            document.getElementById('resPercentage').textContent = pctStr;
+
+            const rankNum = getStudentRank(student.seatNumber);
+            document.getElementById('resRank').textContent = `${Number(rankNum).toLocaleString()} / ${studentsData.length.toLocaleString()}`;
+
+            // Grade / Badge & Success Message Logic
+            const gradeBadge = document.getElementById('resGrade');
+            const alertBanner = document.getElementById('alertBanner');
+            const alertIcon = document.getElementById('alertIcon');
+            const alertMessage = document.getElementById('alertMessage');
+
+            if (pct < 50) {
+                gradeBadge.textContent = 'رسوب / دور ثان';
+                gradeBadge.className = 'grade-badge';
+                gradeBadge.style.background = '#ef4444';
+                gradeBadge.style.color = '#fff';
+
+                alertBanner.className = 'alert-banner alert-danger';
+                alertIcon.className = 'fa-solid fa-triangle-exclamation';
+                alertMessage.textContent = 'نتمنى لك التوفيق في المرة القادمة.';
+            } else if (pct < 85) {
+                gradeBadge.textContent = 'ناجح';
+                gradeBadge.className = 'grade-badge';
+                gradeBadge.style.background = '#10b981';
+                gradeBadge.style.color = '#fff';
+
+                alertBanner.className = 'alert-banner alert-success';
+                alertIcon.className = 'fa-solid fa-circle-check';
+                alertMessage.textContent = '🎉 مبروك، لقد اجتزت امتحان الثانوية العامة بنجاح. نتمنى لك دوام التوفيق والنجاح.';
+            } else {
+                gradeBadge.textContent = 'ممتـــاز 🌟';
+                gradeBadge.className = 'grade-badge';
+                gradeBadge.style.background = 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)';
+                gradeBadge.style.color = '#000';
+
+                alertBanner.className = 'alert-banner alert-gold';
+                alertIcon.className = 'fa-solid fa-trophy';
+                alertMessage.textContent = '🏆 تهانينا! لقد حققت نتيجة متميزة، نتمنى لك مستقبلاً باهرًا.';
+
+                // Confetti for 85%+
+                confetti({
+                    particleCount: 80,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+
+            // Circular Progress Animation & Color Gradient
+            const circle = document.getElementById('circleProgress');
+            const circumference = 2 * Math.PI * 50; // r=50
+            const offset = circumference - (pct / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+
+            let strokeColor = '#ef4444'; // < 60
+            if (pct >= 90) strokeColor = '#f59e0b'; // Gold
+            else if (pct >= 80) strokeColor = '#3b82f6'; // Blue
+            else if (pct >= 70) strokeColor = '#10b981'; // Green
+            else if (pct >= 60) strokeColor = '#f97316'; // Orange
+            circle.style.stroke = strokeColor;
+
+            document.getElementById('circularValueText').textContent = pctStr;
+
+            const now = new Date();
+            document.getElementById('metaTime').textContent = now.toLocaleTimeString('ar-EG', {hour: '2-digit', minute:'2-digit'});
+
+            // Setup Share Links
+            const shareText = `نتيجة الثانوية العامة 2025\nالطالب: ${student.name}\nالمجموع: ${student.score} من ${sys.maxScore} (${pctStr})\nالنظام: ${sys.systemName}`;
+            const encodedText = encodeURIComponent(shareText);
+            document.getElementById('shareWhatsapp').href = `https://api.whatsapp.com/send?text=${encodedText}`;
+            document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+            document.getElementById('shareTelegram').href = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodedText}`;
+
+            document.getElementById('errorState').style.display = 'none';
+            document.getElementById('resultContainer').style.display = 'block';
+            document.getElementById('suggestionsDropdown').style.display = 'none';
+        }
+
+        function hideResult() {
+            document.getElementById('resultContainer').style.display = 'none';
+        }
+
+        function resetSearch() {
+            document.getElementById('searchInput').value = '';
+            hideResult();
+            document.getElementById('searchInput').focus();
+        }
+
+        function copyResultText() {
+            const name = document.getElementById('resName').textContent;
+            const seat = document.getElementById('resSeat').textContent;
+            const total = document.getElementById('resTotal').textContent;
+            const pct = document.getElementById('resPercentage').textContent;
+            const sys = document.getElementById('metaSystem').textContent;
+            const text = `نتيجة الثانوية العامة 2025\nالاسم: ${name}\nرقم الجلوس: ${seat}\nالمجموع: ${total} (${pct})\nالنظام: ${sys}`;
+            navigator.clipboard.writeText(text);
+            alert('تم نسخ تفاصيل النتيجة بنجاح!');
+        }
+
+        // Live Search with Prefix Index & Debounce
+        const searchInput = document.getElementById('searchInput');
+        const suggestionsDropdown = document.getElementById('suggestionsDropdown');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.trim();
+            
+            if (!isDataReady) {
+                updateStatusUI("يتم تجهيز البيانات... يرجى الانتظار ثوانٍ قليلة.", 60);
+                return;
+            }
+
+            if (!query) {
+                suggestionsDropdown.style.display = 'none';
+                hideResult();
+                return;
+            }
+
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                const isNumeric = /^\d+$/.test(query);
+
+                if (isNumeric) {
+                    suggestionsDropdown.style.display = 'none';
+                    const student = seatIndexMap.get(query);
+                    if (student) {
+                        displayResult(student);
+                    } else {
+                        hideResult();
+                    }
+                } else {
+                    const cleanedQuery = cleanName(query);
+                    const firstWord = cleanedQuery.split(' ')[0];
+                    
+                    let candidateSet = prefixIndexMap.get(firstWord);
+                    let matches = [];
+
+                    if (candidateSet) {
+                        for (const student of candidateSet) {
+                            if (student.cleanName.includes(cleanedQuery)) {
+                                matches.push(student);
+                                if (matches.length >= 25) break;
+                            }
+                        }
+                    } else {
+                        // Fallback search if prefix not found
+                        for (const student of studentsData) {
+                            if (student.cleanName.includes(cleanedQuery)) {
+                                matches.push(student);
+                                if (matches.length >= 25) break;
+                            }
+                        }
+                    }
+
+                    if (matches.length > 0) {
+                        suggestionsDropdown.innerHTML = `<div style="padding: 0.5rem 1.25rem; font-size: 0.8rem; color: var(--text-secondary); border-bottom: 1px solid var(--border);">وجدنا ${matches.length} نتيجة</div>`;
+                        matches.forEach(student => {
+                            const sys = getSystemDetails(student.score);
+                            const item = document.createElement('div');
+                            item.className = 'suggestion-item';
+                            item.innerHTML = `
+                                <div>
+                                    <span style="font-weight: 700; display: block;">${student.name}</span>
+                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">رقم الجلوس: ${student.seatNumber}</span>
+                                </div>
+                                <span style="color: var(--accent); font-weight: 800; font-size: 0.9rem;">${student.score} درجة</span>
+                            `;
+                            item.addEventListener('click', () => {
+                                searchInput.value = student.name;
+                                suggestionsDropdown.style.display = 'none';
+                                displayResult(student);
+                            });
+                            suggestionsDropdown.appendChild(item);
+                        });
+                        suggestionsDropdown.style.display = 'block';
+                    } else {
+                        suggestionsDropdown.style.display = 'none';
+                        hideResult();
+                    }
+                }
+            }, 200);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-wrapper')) {
+                suggestionsDropdown.style.display = 'none';
+            }
+        });
+
+        // PDF Export with Certificate Style & QR Code
+        document.getElementById('printPdfBtn').addEventListener('click', () => {
+            const element = document.getElementById('printableCard');
+            const opt = {
+                margin:       10,
+                filename:     'شهادة_نتيجة_الثانوية_العامة_2025.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().from(element).set(opt).save();
+        });
+    </script>
+</body>
+</html>
